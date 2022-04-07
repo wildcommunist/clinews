@@ -1,0 +1,12 @@
+[package]
+name = "clinews"
+version = "0.1.0"
+edition = "2021"
+authors = ["WildCommunist <alex@ceres.ventures>"]
+description = "A simple CLI client that reads news headlines from newsapi"
+readme = "README.md"
+repository = "https://github.com/wildcommunist/clinews"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
