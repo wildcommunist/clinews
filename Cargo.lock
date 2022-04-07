@@ -322,6 +322,7 @@ dependencies = [
  "serde_json",
  "thiserror",
  "ureq",
+ "url",
 ]
 
 [[package]]
@@ -623,6 +624,8 @@ dependencies = [
  "log",
  "once_cell",
  "rustls",
+ "serde",
+ "serde_json",
  "url",
  "webpki",
  "webpki-roots",

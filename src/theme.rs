@@ -14,12 +14,19 @@ pub fn default_theme() -> MadSkin {
     });
     skin.bullet = StyledChar::from_fg_char(Yellow, '✦');
     skin.set_headers_fg(Yellow);
-    skin.quote_mark = StyledChar::from_fg_char(Yellow, '|');
+    skin.quote_mark = StyledChar::from_fg_char(Yellow, '█');
     skin.quote_mark.set_fg(Rgb {
         r: 215,
         g: 255,
         b: 135,
     });
+
+    skin.quote_mark.set_bg(Rgb {
+        r: 39,
+        g: 58,
+        b: 93,
+    });
+
     skin.inline_code.set_fg(Rgb {
         r: 255,
         g: 0,

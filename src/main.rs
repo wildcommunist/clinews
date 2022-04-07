@@ -2,27 +2,29 @@ use std::error::Error;
 
 use dotenv::dotenv;
 
-use newsapi::{Articles, get_articles};
+use newsapi::{Article, Country, Endpoint, NewsAPI};
 
 mod theme;
 
-fn render_articles(articles: &Articles) {
+fn render_articles(articles: &Vec<Article>) {
     let theme = theme::default_theme();
     theme.print_text("# Top headlines\n\n");
-    for a in &articles.articles {
-        theme.print_text(&format!("`{}`", a.title));
-        theme.print_text(&format!("  *{}*", a.url));
+    for a in articles.iter() {
+        theme.print_text(&format!("`{}`", a.Title()));
+        theme.print_text(&format!("> {}", a.URL()));
         theme.print_text("---");
     }
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    dotenv()?;
-    let api_key = std::env::var("API_KEY")?;
-    let url = format!("{}{}", "https://newsapi.org/v2/top-headlines?country=us&apiKey=", api_key);
-    let articles = get_articles(url.as_str())?;
+    dotenv();
 
-    render_articles(&articles);
+    let api_key = std::env::var("API_KEY")?;
+    let mut newsapi = NewsAPI::new(&api_key);
+    newsapi.endpoint(Endpoint::TopHeadlines).country(Country::US {});
+
+    let articles = newsapi.fetch()?;
+    render_articles(&articles.articles);
 
     Ok(())
 }
