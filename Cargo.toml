@@ -15,4 +15,5 @@ termimad = "0.14.2"
 crossterm = "0.20.0"
 thiserror = "1.0.30"
 dotenv = "0.15.0"
-newsapi = { path = "./newsapi" }
+newsapi = { path = "./newsapi", features = ["async"] }
+tokio = { version = "1.17.0", features = ["full"] }
